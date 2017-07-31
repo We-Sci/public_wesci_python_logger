@@ -17,18 +17,25 @@ import wesci
 logger = wesci.Logger(
     user_id='Crazy Scientist',
     script_file=__file__,
-    log_file_prefix="./prefix"  # the log file will be written to ./prefix_wesci_log.csv
+    log_file_prefix="./prefix"
 )
 
 ### Your script starts here ###
 ```
+The `log_file_prefix` parameter is used to specify the path and possibly the prefix of the local log file.
+e.g: (for script named `script.py`)
+1. If `log_file_prefix=None` --> log file will be stored at `./script_wesci_log`
+1. If `log_file_prefix=prefix` --> log file will be stored at `./prefix_wesci_log`
+1. If `log_file_prefix=/log/prefix` --> log file will be stored at `/log/prefix_wesci_log`
 
 ### Adding Input/Output Parameters and Files
 ```python
 ### Your script inputs ###
-a = paramter_input
+a1 = parameter_input
+a2 = another_parameter_input
 
-logger.add_input_params({'a': a})
+logger.add_input_params({'a1': a1,
+                         'a2': a2})
 logger.add_input_files({'input_csv': 'input.csv'})
 
 ### Your script calculations ###
@@ -36,10 +43,12 @@ logger.add_input_files({'input_csv': 'input.csv'})
 # ...
 # ...
 
-b = some_ground_breaking_research_result
+b1 = some_ground_breaking_research_result
+b2 = another_ground_breaking_research_result
 
 logger.add_output_files({'output_csv': 'output.csv'})
-logger.add_output_params({'b': b})
+logger.add_output_params({'b1': b1,
+                          'b2': b2})
 ```
 
 ### Adding Matplotlib figures ###
@@ -49,6 +58,10 @@ plot(ground_breaking_data)
 # save a thumbnail ./prefix_wesci_log_figures/
 logger.add_output_figure('output_fig')
 ```
+The thumbnails are stored at the same location where the log file is stored, in a newly created directory named `<log_file_name>_figures`. The file names are the hashes of the original figures.
+Referring to the example above:
+
+If `log_file_prefix=None` --> log file will be stored at `./script_wesci_log` and the figures will be stored at `./script_wesci_log_figures/`
 
 ### Adding Images ###
 _Coming soon..._
