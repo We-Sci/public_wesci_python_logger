@@ -70,7 +70,9 @@ _Coming soon..._
 Just before the script exits, or at any point deemed important, insert the following code to log the data fed into the logger:
 ```python
 logger.log()
-```
+``` . 
+# @yaron what will be the behaviour if a user puts thie commant several times in a script ? will it 
+# generate several Assays? or will it overwrite the inputs / outputs / params ?
 
 ### Jupyter Notebook support
 Everything's basically the same, besides initialization:
