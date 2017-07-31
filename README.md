@@ -1,7 +1,7 @@
 # playground_for_wesci_python_logger
 
 ## Introduction
-This repo contains instructions and examples of how to use We-Sci's python logger to curate research done using python.
+This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python.
 
 ## Using We-Sci's python logger:
 ### Installation
