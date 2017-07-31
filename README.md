@@ -19,7 +19,8 @@ logger = wesci.Logger(
     script_file=__file__,
     log_file_prefix="./prefix"  # the log file will be written to ./prefix_wesci_log.csv
 )
-
+# @yaron - Shoud we consider explaining where the thumbnails / files are to be stored ? also - to me 
+# it isn't so clear if the "./prefix" includes the path where the log file should be stored at.
 ### Your script starts here ###
 ```
 
@@ -39,7 +40,7 @@ logger.add_input_files({'input_csv': 'input.csv'})
 b = some_ground_breaking_research_result
 
 logger.add_output_files({'output_csv': 'output.csv'})
-logger.add_output_params({'b': b})
+logger.add_output_params({'b': b}) #@yaron - what about when there are several params / files ? what should the syntex be?
 ```
 
 ### Adding Matplotlib figures ###
