@@ -1,4 +1,4 @@
-# playground_for_wesci_python_logger
+# We-Sci Python Logger
 
 ## Introduction
 This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python.
@@ -52,16 +52,7 @@ logger.add_output_params({'b1': b1,
 ```
 
 ### Adding Matplotlib figures ###
-```python
-plot(ground_breaking_data)
-# log the current figure under the name output_fig and 
-# save a thumbnail ./prefix_wesci_log_figures/
-logger.add_output_figure('output_fig')
-```
-The thumbnails are stored at the same location where the log file is stored, in a newly created directory named `<log_file_name>_figures`. The file names are the hashes of the original figures.
-Referring to the example above:
-
-If `log_file_prefix=None` --> log file will be stored at `./script_wesci_log` and the figures will be stored at `./script_wesci_log_figures/`
+_Coming soon..._
 
 ### Adding Images ###
 _Coming soon..._
@@ -71,6 +62,7 @@ Just before the script exits, or at any point deemed important, insert the follo
 ```python
 logger.log()
 ```
+**Note:** Each call to `logger.log()` will record a new assay (experiment/test) - which will be displayed as a separate entity in your timeline on https://app.we-sci.com
 
 ### Jupyter Notebook support
 Everything's basically the same, besides initialization:
