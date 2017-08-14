@@ -82,4 +82,4 @@ Furthermore, the code is extracted from the **last saved .ipynb file** - not the
 You can see usage examples, both for a python script and python notebook at [script_example.py](./script_example.py) and 
 [notebook_example.ipynb](./notebook_example.ipynb) respectively.
 
-Please feel free to open issues here or ping us at contact@we-sci.com!
+Please feel free to open issues here or ping us at support@we-sci.com!
