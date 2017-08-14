@@ -82,4 +82,9 @@ Furthermore, the code is extracted from the **last saved .ipynb file** - not the
 You can see usage examples, both for a python script and python notebook at [script_example.py](./script_example.py) and 
 [notebook_example.ipynb](./notebook_example.ipynb) respectively.
 
-Please feel free to open issues here or ping us at support@we-sci.com!
+
+## Support
+We currently maintain three channels for support:
+- For Python package related issues - you can open a git-issue.
+- For general issues, you can email us at support@we-sci.com.
+- For anything else, you can join the conversation on our [Public-We-Sci-Users](https://join.slack.com/t/public-wesci-users/shared_invite/MjI1MzQzNDM3MzI4LTE1MDI2NDExNDktNGM1MTIzZTY5MA) group.
