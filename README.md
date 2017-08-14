@@ -87,4 +87,4 @@ You can see usage examples, both for a python script and python notebook at [scr
 We currently maintain three channels for support:
 - For Python package related issues - you can open a git-issue.
 - For general issues, you can email us at support@we-sci.com.
-- For anything else, you can join the conversation on our [Public-We-Sci-Users](https://join.slack.com/t/public-wesci-users/shared_invite/MjI1MzQzNDM3MzI4LTE1MDI2NDExNDktNGM1MTIzZTY5MA){:target="_blank"} group.
+- For anything else, you can join the conversation on our [Public-We-Sci-Users](https://join.slack.com/t/public-wesci-users/shared_invite/MjI1MzQzNDM3MzI4LTE1MDI2NDExNDktNGM1MTIzZTY5MA) group.
