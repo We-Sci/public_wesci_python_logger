@@ -69,7 +69,8 @@ Everything's basically the same, besides initialization:
 ```python
 logger = wesci.Logger(
     user_id='Crazy Scientist',
-    script_file='notebook_file.ipynb'  # Note that you need to specify the notebook's file path explicitely!
+    script_file='notebook_file.ipynb'  # Note that you need to specify the notebook's 
+                                       # file path explicitely!
     log_file_prefix="./prefix"  # the log file will be written to ./prefix_wesci_log.csv
 )
 ```
