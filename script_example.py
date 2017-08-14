@@ -1,7 +1,6 @@
 import wesci
 
 logger = wesci.Logger(
-    user_id='Crazy Scientist',
     script_file=__file__,
     log_file_prefix="./script"
 )
