@@ -62,7 +62,7 @@ Just before the script exits, or at any point deemed important, insert the follo
 ```python
 logger.log()
 ```
-**Note:** Each call to `logger.log()` will record a new assay (experiment/test) - which will be displayed as a separate entity in your timeline on https://app.we-sci.com
+**Note:** Each call to `logger.log()` will record a new assay (experiment/test) - which will be displayed as a separate entity in your timeline on the We-Sci web app.
 
 ### Jupyter Notebook support
 Everything's basically the same, besides initialization:
