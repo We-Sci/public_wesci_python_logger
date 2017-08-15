@@ -4,7 +4,7 @@
 This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python.
 
 ## Current SDK Version
-0.2.0
+0.2.2
 
 ## Using We-Sci's python logger:
 ### Installation and Configuration
