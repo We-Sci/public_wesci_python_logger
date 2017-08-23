@@ -4,7 +4,7 @@
 This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python.
 
 ## Current SDK Version
-0.2.2
+0.2.3
 
 ## Python Versions Supported
 We're in a closed beta, currently supporting only Python 2.7 (with and without Jupyter Notebook), on Mac OS and Linux.
@@ -55,6 +55,7 @@ logger.add_output_files({'output_csv': 'output.csv'})
 logger.add_output_params({'b1': b1,
                           'b2': b2})
 ```
+**Note:** We don't support all variable types yet (e.g: Pandas Data Frame). When an unsupported type is passed as input/output param, a warning will be issued when the code is executed, and the param will be ignored.
 
 ### Adding Matplotlib figures ###
 _Coming soon..._
