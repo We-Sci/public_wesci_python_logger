@@ -7,9 +7,9 @@ This repo contains instructions and examples of how to use We-Sci's [Python Logg
 0.2.3
 
 ## Python Versions Supported
-We're in a closed beta, currently supporting only Python 2.7.9+ (with and without Jupyter Notebook), on Mac OS and Linux.
+We're in a closed beta, currently supporting only Python 2.7.9+ (with and without Jupyter Notebook), on Mac OS, Linux and Windows 7+.
 
-Windows and Python 3 support coming very soon.
+Python 3 support coming very soon.
 
 ## Using We-Sci's python logger:
 ### Installation and Configuration
