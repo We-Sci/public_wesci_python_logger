@@ -4,12 +4,11 @@
 This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python.
 
 ## Current SDK Version
-0.2.3
+0.3.0
 
 ## Python Versions Supported
-We're in a closed beta, currently supporting only Python 2.7.9+ (with and without Jupyter Notebook), on Mac OS, Linux and Windows 7+.
+We're in a closed beta, currently supporting only Python 2.7.9+ and Python 3+ (with and without Jupyter Notebook), on Mac OS, Linux and Windows 7+.
 
-Python 3 support coming very soon.
 
 ## Using We-Sci's python logger:
 ### Installation and Configuration
