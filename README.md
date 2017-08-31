@@ -1,7 +1,7 @@
 # We-Sci Python Logger
 
 ## Introduction
-This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python.
+This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python, in your We-Sci's private cloud account.
 
 ## Current SDK Version
 0.3.0
