@@ -4,10 +4,10 @@
 This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python, in your We-Sci's private cloud account.
 
 ## Current SDK Version
-0.3.0
+0.4.0
 
 ## Python Versions Supported
-We're in a closed beta, currently supporting only Python 2.7.9+ and Python 3+ (with and without Jupyter Notebook), on Mac OS, Linux and Windows 7+.
+We're in a closed beta, currently supporting only Python 2.7.9+ and Python 3+ (including Jupyter Notebook), on Mac OS, Linux and Windows 7+.
 
 
 ## Using We-Sci's python logger:
@@ -57,7 +57,19 @@ logger.add_output_params({'b1': b1,
 **Note:** We don't support all variable types yet (e.g: Pandas Data Frame). When an unsupported type is passed as input/output param, a warning will be issued when the code is executed, and the param will be ignored.
 
 ### Adding Matplotlib figures ###
-_Coming soon..._
+After creating a matplotlib figure, capture it by simply add this line to your code:
+```
+from matplotlib import pyplot 
+...
+# create a plot of your data
+pyplot.plot(your_data)
+
+# add this line to log the current figure
+logger.add_output_figure('fig1')
+...
+```
+The logger automatically creates a thumbnail on your local drive and uploads it to our servers when the logging is finalized (see below).
+The thumbnail's filename is a unique hash of its content.
 
 ### Adding Images ###
 _Coming soon..._
