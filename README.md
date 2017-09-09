@@ -12,8 +12,9 @@ We're in a closed beta, currently supporting only Python 2.7.9+ and Python 3+ (i
 
 ## Using We-Sci's python logger:
 ### Installation and Configuration
-1. Install We-Sci's pip [package](https://pypi.python.org/pypi/wesci) by running `pip install wesci`
-2. Follow the instruction you received in the email and create a a local config file (`echo "<your_api_key> >> ~/.wesci.conf`)
+1. If you haven't allready done so - signup to the [web-app](https://app.we-sci.com).
+2. Install We-Sci's pip [package](https://pypi.python.org/pypi/wesci) by running `pip install wesci`
+3. Follow the instruction you received in the email and create a a local config file (`echo "<your_api_key> >> ~/.wesci.conf`)
 
 ### Initializing
 ```python
