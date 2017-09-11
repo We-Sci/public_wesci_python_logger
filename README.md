@@ -1,13 +1,13 @@
 # We-Sci Python Logger
 
 ## Introduction
-This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to curate research done using python, in your We-Sci's private cloud account.
+This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to auto-curate research done using python, in your We-Sci's private cloud account.
 
-## Current SDK Version
+## Current Package Version
 0.5.0
 
 ## Python Versions Supported
-We're in a closed beta, currently supporting only Python 2.7.9+ and Python 3+ (including Jupyter Notebook), on Mac OS, Linux and Windows 7+.
+We're in a beta, currently supporting only Python 2.7.9+ and Python 3+ (including Jupyter Notebook), on Mac OS, Linux and Windows 7+. The product is undergoing intensive improvement and enhancement process on a daily basis.
 
 
 ## Using We-Sci's python logger:
