@@ -1,7 +1,7 @@
 # We-Sci Python Logger
 
 ## Introduction
-This repo contains instructions and examples of how to use We-Sci's [Python Logger SDK](https://pypi.python.org/pypi/wesci) to auto-curate research done using python, in your We-Sci's private cloud account.
+This repo contains instructions and examples of how to use We-Sci's [Python Logger package](https://pypi.python.org/pypi/wesci) to auto-curate research done using python, in your We-Sci's private cloud account.
 
 ## Current Package Version
 0.5.0
