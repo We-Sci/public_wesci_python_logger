@@ -170,6 +170,7 @@ The result will be:
 	* b = 9
 	* c = 10
 
+**Note:** Files and figures currently aren't supported with the automatic and block APIs, and must be added explicitly (see below).
 	
 ### Adding Input/Output Files
 ```python
@@ -185,6 +186,8 @@ logger.add_output_files({'output_csv': 'output.csv'})
 ```
 Much like params, not all file type are supported.
 For all supported file types - you'll be able to click on their row in the file table at [app.we-sci.com](https://app.we-sci.com) and see their preview in the bottom preview box.
+
+**Note**: Unlike params, files must currently be logged explicitly, using `add_input/output_file`.
 
 ### Adding Matplotlib figures ###
 After creating a matplotlib figure, capture it by simply add this line to your code:
