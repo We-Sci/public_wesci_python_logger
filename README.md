@@ -4,7 +4,7 @@
 This repo contains instructions and examples of how to use We-Sci's [Python Logger package](https://pypi.python.org/pypi/wesci) to auto-curate research done using python, in your We-Sci's private cloud account.
 
 ## Current Package Version
-0.5.1
+0.6.0
 
 ## Python Versions Supported
 We're in a beta, currently supporting only Python 2.7.9+ and Python 3+ (including Jupyter Notebook), on Mac OS, Linux and Windows 7+. The product is undergoing intensive improvement and enhancement process on a daily basis.
@@ -33,7 +33,70 @@ e.g: (for script named `script.py`)
 1. If `log_file_prefix=prefix` --> log file will be stored at `./prefix_wesci_log`
 1. If `log_file_prefix=/log/prefix` --> log file will be stored at `/log/prefix_wesci_log`
 
-### Adding Input/Output Parameters and Files
+### Logging Params
+**Note:** We don't support all variable types yet. When an unsupported type is passed as input/output param, a warning will be issued when the code is executed, and the param will be ignored.
+For all supported params types - you'll be able to click on their row in the params table at [app.we-sci.com](https://app.we-sci.com) and see their preview in the bottom preview box.
+
+The logger supports multiple methods for logging your script's params, trading-off between the amount of code needed to start logging and accuracy of logging:
+
+#### Automatically Logging All Global Params
+```python
+### Your script's parameters and calculations ###
+# ...
+# ...
+# ...
+logger.log(globals())
+```
+The logger can accept the `globals()` dictionary (or any other dictionary) and log the parameters provided as **output params**.
+When using `globals()`, you automatically get all the variables defined in your script's global scope.
+The logger makes a best effort attempt to remove all the global variables that are irrelevant, e.g:
+* modules
+* functions
+* variables whose name starts with `_`
+* unsupported complex types
+
+**Pros**
+* Up and logging in 1 min
+* No need to update logging code as the script code updates
+
+**Cons**
+* All params are logged as **output params**
+* Useless params (like `for` loop indices `i`, `j`, etc...) are also captured
+
+**Recommended use case:** When first experimenting with a new script, where all input and output params and the script's structure is not yet finalized. Or in cases where there's an existing complicated script and you want to invest minimum effort to start logging.
+
+#### Defining Input and Output Blocks
+```python
+### Your script inputs ###
+logger.input_params_start(globals())
+a1 = parameter_input
+a2 = another_parameter_input
+logger.input_params_end(globals())
+
+### Your script calculations ###
+# ...
+# ...
+# ...
+
+logger.output_params_start(globals())
+b1 = some_ground_breaking_research_result
+b2 = another_ground_breaking_research_result
+logger.output_params_end(globals())
+```
+The logger has an API to define the start and end of the areas in your script where input and output params are defined. The start/end functions must be provided with the `globals()` dict, as they perform a diff between the start and end state of the global variables, keeping only the ones actually created within the block. Irrelevant variables are again removed, using the same heuristics as state above (in automatic logging).
+
+**Pros**
+* Bulk addition of many params, saves the need to add logging lines as params are added to the script
+* Clear separation between input and output params in app.we-sci.com
+* Useless params (like `for` loop indices) aren't captured
+
+**Cons**
+* Requires your script to have clear block designated for input and output param definitions
+* All your params must be defined in the global scope
+
+**Recommended use case:** When your script structure is finalized, and you have clear defined areas for input and output params. This method is the best trade-off between investment to start logging and accuracy of logging.
+
+#### Manually Adding Params To Be Logged
 ```python
 ### Your script inputs ###
 a1 = parameter_input
@@ -41,7 +104,6 @@ a2 = another_parameter_input
 
 logger.add_input_params({'a1': a1,
                          'a2': a2})
-logger.add_input_files({'input_csv': 'input.csv'})
 
 ### Your script calculations ###
 # ...
@@ -51,13 +113,81 @@ logger.add_input_files({'input_csv': 'input.csv'})
 b1 = some_ground_breaking_research_result
 b2 = another_ground_breaking_research_result
 
-logger.add_output_files({'output_csv': 'output.csv'})
 logger.add_output_params({'b1': b1,
                           'b2': b2})
 ```
-**Note:** We don't support all variable types yet. When an unsupported type is passed as input/output param, a warning will be issued when the code is executed, and the param will be ignored.
+In this method - a dict with param name and value pairs is explicitly provided to the logger.
 
-For all supported params and file types - you'll be able to click on their row in the files/params table at [app.we-sci.com](https://app.we-sci.com) and see their preview in the bottom preview box.
+**Pros**
+* Only params deemed relevant by you are captured
+* Params can be captured anywhere in the script (or other modules), as the logger object is passed and the proper functions are called
+
+**Cons**
+* You need to update the logging code as you update the script
+
+**Recommended use case:** When you need to log params that aren't in your global scope (in functions, modules, etc...).
+
+#### Combining Param Logging Methods
+It is possible to combine all the above mentioned methods  together to log params in your scripts.
+The manual and in/out blocks logging takes precedence over the automatic logging, since automatic logging doesn't log a param already known to the logger.
+When combining manuall logging and in/out blocks, whichever is last has precedence, as param values are overriden.
+
+The precedence is explained by this example:
+```python
+import wesci
+
+logger = wesci.Logger(
+    script_file=__file__,
+    log_file_prefix="./script"
+)
+
+# initialy set 'a' to be 3
+logger.input_params_start(globals())
+a = 3
+logger.input_params_end(globals())
+
+# this will override 'a' to be logged as 4
+logger.add_input_params({'a': 4})
+
+# initially set 'b' to 0
+logger.add_output_params({'b': 0})
+
+# override 'b' to be 3**2 = 9
+logger.output_params_start(globals())
+b = a**2
+logger.output_params_end(globals())
+
+c = 10
+
+# 'c' will be logged as an output param with value of 10, but 'a' won't be overriden to 3
+logger.log(globals())
+
+```
+The result will be:
+* Input params: 
+	* a = 4
+* Output params:
+	* b = 9
+	* c = 10
+
+**Note:** Files and figures currently aren't supported with the automatic and block APIs, and must be added explicitly (see below).
+	
+### Adding Input/Output Files
+```python
+### Your script inputs ###
+logger.add_input_files({'input_csv': 'input.csv'})
+
+### Your script calculations ###
+# ...
+# ...
+# ...
+
+logger.add_output_files({'output_csv': 'output.csv'})
+```
+Much like params, not all file type are supported.
+For all supported file types - you'll be able to click on their row in the file table at [app.we-sci.com](https://app.we-sci.com) and see their preview in the bottom preview box.
+
+**Note**: Unlike params, files must currently be logged explicitly, using `add_input/output_file`.
 
 ### Adding Matplotlib figures ###
 After creating a matplotlib figure, capture it by simply add this line to your code:
@@ -98,8 +228,7 @@ Furthermore, the code is extracted from the **last saved .ipynb file** - not the
 
 
 ## Examples
-You can see usage examples, both for a python script and python notebook at [script_example.py](./script_example.py) and 
-[notebook_example.ipynb](./notebook_example.ipynb) respectively.
+You can see usage examples, both for python scripts and python notebook in the repo.
 
 
 ## Support
